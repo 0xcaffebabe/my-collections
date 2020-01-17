@@ -4,7 +4,7 @@ package wang.ismy.collections;
  * @author MY
  * @date 2020/1/16 14:21
  */
-public class MyArrayList<E> {
+public class MyArrayList<E> implements MyList<E> {
 
     private Object[] elementData;
 
@@ -24,12 +24,14 @@ public class MyArrayList<E> {
         this(10);
     }
 
+    @Override
     public void add(E value) {
         // 判断实际存放的元素数是否大于等于数组的长度
         ensureExplicitCapacity(size + 1);
         elementData[size++] = value;
     }
 
+    @Override
     public void add(int index, E value) {
         if (index < 0) {
             throw new ArrayIndexOutOfBoundsException("下标越界");
@@ -40,6 +42,7 @@ public class MyArrayList<E> {
         size++;
     }
 
+    @Override
     public E remove(int index) {
         if (index >= size || index < 0) {
             throw new ArrayIndexOutOfBoundsException("下标越界");
@@ -67,6 +70,7 @@ public class MyArrayList<E> {
         return false;
     }
 
+    @Override
     public int size() {
         return size;
     }
@@ -85,6 +89,7 @@ public class MyArrayList<E> {
         }
     }
 
+    @Override
     public E get(int index) {
         return (E)elementData[index];
     }

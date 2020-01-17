@@ -10,7 +10,7 @@ public class MyLinkedListTest {
 
     @Test
     public void testAddAndGet(){
-        MyLinkedList<String> list = new MyLinkedList<>();
+        MyList<String> list = new MyLinkedList<>();
         list.add("1");
         list.add("2");
         list.add("3");
@@ -19,7 +19,7 @@ public class MyLinkedListTest {
 
     @Test
     public void testRemove(){
-        MyLinkedList<String> list = new MyLinkedList<>();
+        MyList<String> list = new MyLinkedList<>();
         list.add("1");
         list.add("2");
         list.add("3");
@@ -33,7 +33,7 @@ public class MyLinkedListTest {
 
     @Test
     public void testInsert(){
-        MyLinkedList<String> list = new MyLinkedList<>();
+        MyList<String> list = new MyLinkedList<>();
         list.add("1");
         list.add("2");
         list.add("3");

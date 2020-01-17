@@ -6,7 +6,7 @@ import java.awt.*;
  * @author MY
  * @date 2020/1/16 19:44
  */
-public class MyLinkedList<E> {
+public class MyLinkedList<E> implements MyList<E> {
 
     /**
      * 链表实际存储元素数
@@ -32,6 +32,7 @@ public class MyLinkedList<E> {
         Node<E> next;
     }
 
+    @Override
     public void add(E e) {
         Node<E> node = new Node<>();
         node.data = e;
@@ -46,7 +47,8 @@ public class MyLinkedList<E> {
         size++;
     }
 
-    public void add(int index,E e){
+    @Override
+    public void add(int index, E e){
         checkRange(index);
         Node<E> node = getNode(index);
         Node<E> insertNode = new Node<>();
@@ -63,11 +65,13 @@ public class MyLinkedList<E> {
         size++;
     }
 
+    @Override
     public E get(int index) {
         checkRange(index);
         return getNode(index).data;
     }
 
+    @Override
     public E remove(int index){
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("越界");
@@ -87,6 +91,7 @@ public class MyLinkedList<E> {
         return result;
     }
 
+    @Override
     public int size(){
         return size;
     }
