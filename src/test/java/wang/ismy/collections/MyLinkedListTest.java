@@ -10,7 +10,7 @@ public class MyLinkedListTest {
 
     @Test
     public void testAddAndGet(){
-        LinkedList<String> list = new LinkedList<>();
+        MyLinkedList<String> list = new MyLinkedList<>();
         list.add("1");
         list.add("2");
         list.add("3");
@@ -19,14 +19,32 @@ public class MyLinkedListTest {
 
     @Test
     public void testRemove(){
-        LinkedList<String> list = new LinkedList<>();
+        MyLinkedList<String> list = new MyLinkedList<>();
         list.add("1");
         list.add("2");
         list.add("3");
-        list.remove(1);
+        assertEquals("2",list.remove(1));
         assertEquals(2,list.size());
         assertEquals("1",list.get(0));
         assertEquals("3",list.get(1));
+        assertEquals("1",list.remove(0));
+        assertEquals(1,list.size());
+    }
+
+    @Test
+    public void testInsert(){
+        MyLinkedList<String> list = new MyLinkedList<>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add(0,"0");
+        list.add(1,"x");
+        assertEquals(5,list.size());
+        String ret = "";
+        for (int i = 0; i < 5; i++) {
+            ret+=list.get(i);
+        }
+        assertEquals("0x123",ret);
     }
 
 }

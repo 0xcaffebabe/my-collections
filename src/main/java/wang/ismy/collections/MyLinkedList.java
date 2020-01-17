@@ -46,21 +46,44 @@ public class MyLinkedList<E> {
         size++;
     }
 
-    public E get(int index) {
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("查询越界");
+    public void add(int index,E e){
+        checkRange(index);
+        Node<E> node = getNode(index);
+        Node<E> insertNode = new Node<>();
+        insertNode.data = e;
+        insertNode.next = node;
+        if (node.pre == null){
+            // 插入在头节点
+           first = insertNode;
+           node.pre = first;
+        }else {
+           insertNode.pre = node.pre;
+           insertNode.pre.next = insertNode;
         }
+        size++;
+    }
+
+    public E get(int index) {
+        checkRange(index);
         return getNode(index).data;
     }
 
     public E remove(int index){
-        if (index < 0 || index > size) {
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("越界");
         }
         Node<E> node = getNode(index);
+
         E result = node.data;
-        // 将被删除节点前驱指向被删除节点的后继
-        node.pre = node.next;
+        if (node.pre == null){
+            // 当前删除的是头节点
+            first = null;
+            last = null;
+        }else {
+            // 将被删除节点前驱的后继指向被删除节点的后继
+            node.pre.next = node.next;
+        }
+        size--;
         return result;
     }
 
@@ -74,6 +97,12 @@ public class MyLinkedList<E> {
             node = node.next;
         }
         return node;
+    }
+
+    private void checkRange(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("查询越界");
+        }
     }
 
 }
