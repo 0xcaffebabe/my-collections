@@ -1,8 +1,7 @@
 package wang.ismy.collections;
 
 import org.junit.Test;
-
-import java.util.LinkedList;
+import wang.ismy.collections.list.MyLinkedList;
 
 import static org.junit.Assert.*;
 

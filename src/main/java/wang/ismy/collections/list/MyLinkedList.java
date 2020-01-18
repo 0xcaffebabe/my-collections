@@ -1,4 +1,6 @@
-package wang.ismy.collections;
+package wang.ismy.collections.list;
+
+import wang.ismy.collections.MyList;
 
 import java.awt.*;
 
